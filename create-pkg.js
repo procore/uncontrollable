@@ -6,7 +6,7 @@ delete pkg.devDependencies
 var base ={
   "name": "uncontrollable",
   "version": pkg.version,
-  "description": "Wrap a controlled react component, to allow spcific prop/handler pairs to be uncontrolled",
+  "description": "Wrap a controlled react component, to allow specific prop/handler pairs to be uncontrolled",
   "author": {
     "name": "Jason Quense",
     "email": "monastic.panic@gmail.com"
