@@ -46,14 +46,19 @@ export default function createUncontrollable(mixins, set){
         let props = this.props
           , keys  = Object.keys(controlledValues);
 
+        let defaultValueChanged = key => {
+          return utils.getValue(nextProps, utils.defaultKey(key))
+            !== utils.getValue(props, utils.defaultKey(key));
+        }
+
         keys.forEach(key => {
           if (utils.getValue(nextProps, key) === undefined
            && utils.getValue(props, key) !== undefined)
            {
              this._values[key] = nextProps[utils.defaultKey(key)]
            }
-          else if (utils.getValue(nextProps, utils.defaultKey(key))
-           !== utils.getValue(props, utils.defaultKey(key)))
+          else if (utils.getValue(nextProps, key) === undefined
+            && defaultValueChanged(key))
            {
              this._values[key] = nextProps[utils.defaultKey(key)];
            }
