@@ -43,6 +43,8 @@ export default function createUncontrollable(mixins, set){
        * reset its value to the defaultValue
        */
       componentWillReceiveProps(nextProps){
+        console.warn('createUncontrollable::componentWillReceiveProps');
+        console.warn('GARBAGE');
         let props = this.props
           , keys  = Object.keys(controlledValues);
 
@@ -51,8 +53,14 @@ export default function createUncontrollable(mixins, set){
             !== utils.getValue(props, utils.defaultKey(key));
         }
 
+        let clobberWithDefaultValue = key => {
+          const value = nextProps[utils.defaultKey(key)];
+
+          console.warn(`setting ${key} to ${value}`);
+          this._values[key] = nextProps[utils.defaultKey(key)];
+        }
+
         keys.forEach(key => {
-          console.warn('createUncontrollable::componentWillReceiveProps');
           console.warn('props');
           console.warn(key, utils.getValue(props, key));
           console.warn(utils.defaultKey(key), props[utils.defaultKey(key)]);
@@ -64,12 +72,12 @@ export default function createUncontrollable(mixins, set){
           if (utils.getValue(nextProps, key) === undefined
            && utils.getValue(props, key) !== undefined)
            {
-             this._values[key] = nextProps[utils.defaultKey(key)]
+             clobberWithDefaultValue(key);
            }
           else if (utils.getValue(nextProps, key) === undefined
             && defaultValueChanged(key))
            {
-             this._values[key] = nextProps[utils.defaultKey(key)];
+             clobberWithDefaultValue(key);
            }
         })
       },
