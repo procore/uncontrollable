@@ -44,7 +44,7 @@ export default function createUncontrollable(mixins, set){
        */
       componentWillReceiveProps(nextProps){
         console.warn('createUncontrollable::componentWillReceiveProps');
-        console.warn('GARBAGE');
+        console.error('THIS IS A TEST');
         let props = this.props
           , keys  = Object.keys(controlledValues);
 
