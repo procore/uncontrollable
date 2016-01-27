@@ -52,6 +52,15 @@ export default function createUncontrollable(mixins, set){
         }
 
         keys.forEach(key => {
+          console.warn('createUncontrollable::componentWillReceiveProps');
+          console.warn('props');
+          console.warn(key, utils.getValue(props, key));
+          console.warn(utils.defaultKey(key), props[utils.defaultKey(key)]);
+          console.warn('nextProps');
+          console.warn(key, utils.getValue(nextProps, key));
+          console.warn(utils.defaultKey(key), nextProps[utils.defaultKey(key)]);
+          console.warn('');
+
           if (utils.getValue(nextProps, key) === undefined
            && utils.getValue(props, key) !== undefined)
            {
