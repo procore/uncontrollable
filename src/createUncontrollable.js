@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 import * as utils from './utils';
 
 export default function createUncontrollable(mixins, set){
@@ -18,7 +20,7 @@ export default function createUncontrollable(mixins, set){
       }
     }, {})
 
-    let component = React.createClass({
+    let component = createReactClass({
 
       displayName: `Uncontrolled(${displayName})`,
 
