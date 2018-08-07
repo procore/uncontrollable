@@ -16,7 +16,7 @@ export default function createUncontrollable(mixins, set){
 
     methods = utils.transform(methods, (obj, method) => {
       obj[method] = function(...args){
-        return this.refs.inner[method](...args)
+        return this.innerRef[method](...args)
       }
     }, {})
 
@@ -83,9 +83,11 @@ export default function createUncontrollable(mixins, set){
           newProps[handle] = setAndNotify.bind(this, propName)
         })
 
-        newProps = { ...props, ...newProps, ref: 'inner' }
+        newProps = { ...props, ...newProps }
 
-        return React.createElement(Component, newProps);
+        return (
+          <Component { ...newProps } ref={(ref) => this.innerRef = ref } />
+        )
       }
 
     })
