@@ -1,13 +1,11 @@
 {
-  "stage": 0,
-  "loose": [
-    "all"
+  "presets": [
+    "react", "stage-0", "env"
   ],
-  "blacklist": [
-    "es6.tailCall",
-    "es6.forOf",
-    "es7.trailingFunctionCommas",
-    "es7.comprehensions",
-    "es7.exportExtensions"
+  "plugins": [
+    "external-helpers",
+    "transform-decorators-legacy",
+    "transform-runtime",
+    "transform-class-properties"
   ]
 }

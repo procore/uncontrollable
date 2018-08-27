@@ -44,10 +44,10 @@ export function uncontrolledPropTypes(controlledValues, basePropTypes, displayNa
 export let version = React.version.split('.').map(parseFloat);
 
 export function getType(component){
-  if( version[0] === 0 && version[1] >= 13)
-    return component
+  if( version[0] === 0 && version[1] <= 13)
+    return component.type
 
-  return component.type
+  return component
 }
 
 export function getValue(props, name){

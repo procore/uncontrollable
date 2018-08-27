@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import * as utils from './utils';
 
 export default function createUncontrollable(mixins, set){
@@ -14,11 +15,11 @@ export default function createUncontrollable(mixins, set){
 
     methods = utils.transform(methods, (obj, method) => {
       obj[method] = function(...args){
-        return this.refs.inner[method](...args)
+        return this.innerRef[method](...args)
       }
     }, {})
 
-    let component = React.createClass({
+    let component = createReactClass({
 
       displayName: `Uncontrolled(${displayName})`,
 
@@ -81,9 +82,11 @@ export default function createUncontrollable(mixins, set){
           newProps[handle] = setAndNotify.bind(this, propName)
         })
 
-        newProps = { ...props, ...newProps, ref: 'inner' }
+        newProps = { ...props, ...newProps }
 
-        return React.createElement(Component, newProps);
+        return (
+          <Component { ...newProps } ref={(ref) => this.innerRef = ref } />
+        )
       }
 
     })
