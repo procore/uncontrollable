@@ -22,8 +22,7 @@
     "clean": "rimraf lib",
     "copy": "cpy ./README.md ./lib",
     "tdd": "karma start",
-    "build": "npm run clean && babel src --out-dir lib && npm run copy",
-    "release": "release"
+    "build": "npm run clean && babel src --out-dir lib && npm run copy"
   },
   "peerDependencies": {
     "react": ">=0.11.0"
@@ -58,12 +57,11 @@
     "mocha": "~1.21.4",
     "phantomjs": "^1.9.16",
     "react": ">=0.11.0",
-    "release-script": "^0.3.1",
     "rimraf": "^2.2.8",
     "sinon-chai": "^2.6.0",
     "style-loader": "^0.8.3",
-    "webpack": "^1.4.15",
-    "webpack-dev-server": "^1.7.0"
+    "webpack": "^1",
+    "webpack-dev-server": "^1"
   },
   "dependencies": {
     "create-react-class": "^15.6.3",
