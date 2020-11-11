@@ -68,6 +68,6 @@
   "dependencies": {
     "create-react-class": "^15.6.3",
     "invariant": "^2.1.0",
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.7.2"
   }
 }
